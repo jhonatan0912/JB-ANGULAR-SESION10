@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthGuard } from 'src/app/guards/auth.guard';
-import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 interface User {
   username: String;
@@ -19,19 +18,19 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(private authGuard: AuthGuard) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    if (this.user.username != "" && this.user.password != "") {
+    if (this.user.username == "AD" && this.user.password == "123456") {
       console.log("correct");
-      this.authGuard.canActivate()
+      this.router.navigate(['/menu'])
     } else {
       console.log("incorrect");
     }
-    return false
+    return false;
   }
 
 }
