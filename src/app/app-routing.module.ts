@@ -4,12 +4,14 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { UsComponent } from './components/us/us.component';
+import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'product', component: ProductComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'us', component: UsComponent },
+  { path: 'us', component: UsComponent, canActivate: [AuthGuard] },
   // { path: '**', component: HomeComponent }
 ];
 
